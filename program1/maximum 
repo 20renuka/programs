@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main(void) {
+  int Counter, Numbers[50], Maximum, Number;
+  printf("How many numbers you want to enter");
+  scanf("%d", &Number);
+  printf("Enter the first number:");
+  scanf("%d", &Numbers[0]);
+  for(Counter = 1; Counter < Number; Counter++ )
+  {
+    printf("Enter the next number:");
+    scanf("%d", &Numbers[Counter]);
+  }
+  Counter = 0;
+  Maximum = Numbers[Counter];
+  for(Counter = 1; Counter < Number; Counter++)
+  {
+    if(Maximum < Numbers[Counter])
+    {
+      Maximum = Numbers[Counter];
+    }
+  }
+  printf("The maximum number of among the given %d numbers is %d.", Number Maximum);
+  return 0;
+}
