@@ -7,7 +7,7 @@ var readln = (typeof readline === 'function') ? (readline) : (function() {
          return String(stdin.readLine());  // Read line, 
      };                                    // force to JavaScript String
  }());
-print("Enter a number to print series upto the given number:");
+System.out.print("Enter a number to print series upto the given number:");
 var Count = parseInt(readln());
 
 var TermCounter = 2;
@@ -25,5 +25,5 @@ while (Product <= Count){
   
   TermCounter = TermCounter + 1;
 }
-print( "The series till " + Count + " is" +Terms + ".");
+System.out.print( "The series till " + Count + " is" +Terms + ".");
 
