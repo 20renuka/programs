@@ -7,14 +7,14 @@ int main()
 	
 	printf("Enter a message to decrypt: ");
 	scanf("%s", message);
-	printf("Enter key: ");
-	scanf("%d", &key);
+	//printf("Enter key: ");
+	//scanf("%d", &key);
 	
 	for(i = 0; message[i] != '\0'; ++i){
 		ch = message[i];
 		
 		if(ch >= 'a' && ch <= 'z'){
-			ch = ch - key;
+			ch = ch - 1;
 			
 			if(ch < 'a'){
 				ch = ch + 'z' - 'a' + 1;
@@ -23,7 +23,7 @@ int main()
 			message[i] = ch;
 		}
 		else if(ch >= 'A' && ch <= 'Z'){
-			ch = ch - key;
+			ch = ch - 1;
 			
 			if(ch < 'A'){
 				ch = ch + 'Z' - 'A' + 1;
