@@ -5,21 +5,21 @@ int main()
 {
 	char message[100], ch;
 	int i, key = 0, number[100], stage2[100], stage3[100];
-	/*char arr[26]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n'
-	,'o','p','q','r','s','t','u','v','x','y','z'};
-	char carr[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N'
-	,'O','P','Q','R','S','T','U','V','X','Y','Z'};*/
 	
 	printf("Enter a message to encrypt: ");
-	//gets(message);
-	scanf("%s", message);
-	//printf("Enter key: ");
-	//scanf("%d", &key);
+	
+	scanf("%[^\n]%*c", message);
+	
 	
 	for(i = 0; message[i] != '\0'; ++i){
 		ch = message[i];
-		
+		if(ch == 32){
+		   message[i] = ch;
+			int asci= ch;
+			number[i]= 54;
+		}
 		if(ch >= 'a' && ch <= 'z'){
+		    
 			ch = ch + 1;
 			
 			if(ch > 'z'){
@@ -63,10 +63,10 @@ int main()
 	for(i=0;message[i]!='\0';i++){
 	    printf(" %d",i+1);
 	    stage2[i] = key - number[i];
-	    stage3[i]=stage2dd[i]-(i+1);
+	    stage3[i]=stage2[i]-(i+1);
 	    
 	}
-	printf("\nsum %d",key);
+	printf("\n %d",key);
 	printf("\nstage2:");
 	for(i=0;message[i] != '\0';i++){
 	    printf(" %d", stage2[i]);
