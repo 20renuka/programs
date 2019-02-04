@@ -1,97 +1,77 @@
 #include<stdio.h>
-//#include<conio.h>
- 
 int main()
-{
-	char message[100], ch;
-	int i, key = 0, number[100], stage2[100], stage3[100];
-	
-	printf("Enter a message to encrypt: ");
-	
-	scanf("%[^\n]%*c", message);
-	
-	
-	for(i = 0; message[i] != '\0'; ++i){
-		ch = message[i];
-		
-		if(ch >= 'a' && ch <= 'z'){
-		   
-		   if(ch == 'z'){
-		       ch = ch -90;
-				message[i] = ch;
-			int asci = ch;
-			number[i] = asci +21;
+ {
+	char Message[100], Character;
+	int Counter, key = 0, Stage1[100], Stage2[100], Stage3[100];
+	printf("Enter the message which you want to encrypt: ");
+	scanf("%[^\n]%*c", &Message);
+	for(Counter = 0; Message[Counter] != '\0'; ++Counter) {
+	    Character = Message[Counter];
+		if(Character >= 'a' && Character <= 'z'){		   
+		   if(Character == 'z'){
+		       Character = Character - 90;
+			   Message[Counter] = Character;
+    		   int asci = Character;
+			   Stage1[Counter] = asci + 21;
+	         }
+	         else {
+	             Character = Character + 1;
+	             Message[Counter] = Character;
+	             int asci = Character;
+	             Stage1[Counter] = asci - 70;
+	         }
 	    }
-            else{
-			ch = ch + 1;
-			message[i] = ch;
-			int asci = ch;
-			number[i] = asci - 70;
-			
-			
-		}
-
-			
-		}
-		else if(ch >= 'A' && ch <= 'Z'){
-			
-			if(ch == 'Z'){
-		       ch = ch + 7;
-				message[i] = ch;
-			int asci = ch;
-			number[i] = asci +21;
-		}
-
-			
-			else{
-			ch = ch + 1;
-			message[i] = ch;
-			int asci= ch;
-			number[i]=asci-64;
-			
-				}}
-				else{
-				    if(ch == '~'){
-				    ch = 'A';
-				    message[i] = ch;
-				    int asci = ch;
-				    number[i] = asci - 64;
-				    
-			    }
-
-				   else{ ch = ch + 1;
-				   message[i] = ch;
-			       int asci= ch;
-			       number[i]=asci+21;
-				}
-				
-			}
-
-				
-	}
+	    else if(Character >= 'A' && Character <= 'Z') {
+	        if(Character == 'Z'){
+	            Character = Character + 7;
+	            Message[Counter] = Character;
+	            int asci = Character;
+	            Stage1[Counter] = asci +21;
+	            }
+	            else {
+	                Character = Character + 1;
+	                Message[Counter] = Character;
+	                int asci = Character;
+	                Stage1[Counter] = asci - 64;
+	            }  
+    	}
+		else {
+			  if(Character == '~') {
+			      Character = 'A';
+			      Message[Counter] = Character;
+			      int asci = Character;
+			      Stage1[Counter] = asci - 64;
+				  }
+              else {
+                  Character = Character + 1;
+                  Message[Counter] = Character;
+                  int asci = Character;
+                  Stage1[Counter] = asci + 21;
+				   }
+		     }
+          }
 	
-	printf("Stage1: %s\n", message);
+	printf("Stage1: %s\n", Message);
 	printf("Facevalue:");
-	for(i=0;message[i]!='\0';i++){
-	    printf(" %d",number[i]);
-	    key = key + number[i];
+	for(Counter = 0; Message[Counter] != '\0'; Counter++) {
+	    printf(" %d",Stage1[Counter]);
+	    key = key + Stage1[Counter];
 	}
 	printf("\nPosition value:");
-	for(i=0;message[i]!='\0';i++){
-	    printf(" %d",i+1);
-	    stage2[i] = key - number[i];
-	    stage3[i]=stage2[i]-(i+1);
-	    
-	}
-	printf("\n %d",key);
-	printf("\nstage2:");
-	for(i=0;message[i] != '\0';i++){
-	    printf(" %d", stage2[i]);
-}
-printf("\nstage3:");
-	for(i=0;message[i] != '\0';i++){
-	    printf(" %d", stage3[i]);
-}
+	for(Counter = 0; Message[Counter] != '\0'; Counter++) {
+	    printf(" %d", Counter + 1);
+	    Stage2[Counter] = key - Stage1[Counter];
+	    Stage3[Counter] = Stage2[Counter] - (Counter + 1);
+	  }
+	printf("\n Key: %d",key);
+	printf("\nStage2: ");
+	for(Counter = 0; Message[Counter] != '\0'; Counter++) {
+	    printf(" %d", Stage2[Counter]);
+      }
+    printf("\nStage3:");
+    for(Counter = 0; Message[Counter] != '\0'; Counter++){
+	    printf(" %d", Stage3[Counter]);
+       }
 	printf("\n");                                                                          
 	return 0;
 }

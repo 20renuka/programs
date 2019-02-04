@@ -2,43 +2,42 @@
  
 int main()
 {
-	int Dmessage[100], i,stage1[100],key,stage2[100],stage3[100], j=1;
-	printf("enter the key ");
+	int Encryptedmessage[100], Counter, Stage1[100],key, Stage2[100], Stage3[100];
+	printf("Enter the key which you have to use for decryption:");
 	scanf("%d", &key);
-	 printf("Enter the number ");
-	 for(i = 1; Dmessage[i -1]!=key; i++){
-	     
-	     scanf("%d", &Dmessage[i]);
-	     stage1[i] = Dmessage[i] + i;
-	     stage2[i] = key - stage1[i];
+	 printf("Enter the Message: ");
+	 for(Counter = 1; Encryptedmessage[Counter -1] != key; Counter ++) {
+	     scanf("%d", &Encryptedmessage[Counter]);
+	     Stage1[Counter] = Encryptedmessage[Counter] + Counter;
+	     Stage2[Counter] = key - Stage1[Counter];
 	 }
-	 Dmessage[i - 1] = 0;
-     printf("stage1: ");
-	 for(i = 1; Dmessage[i] != 0 ; i++){
-	     printf("%d ", stage1[i]);
+	 Encryptedmessage[Counter - 1] = 0;
+     printf("Stage1: ");
+	 for(Counter = 1; Encryptedmessage[Counter] != 0 ; Counter++){
+	     printf("%d ", Stage1[Counter]);
 	 }
-printf("\n");
-printf("stage2: ");
-for(i = 1; Dmessage[i] != 0; i++){
-	     printf("%d ", stage2[i]);
-	 }
-printf("\n");
-for (i=1; Dmessage[i] != 0; i++){
-    
-    if (stage2[i] >=53){
-        stage3[i] = stage2[i]-21;
+    printf("\n");
+    printf("Stage2: ");
+    for(Counter = 1; Encryptedmessage[Counter] != 0; Counter ++){
+    	     printf("%d ", Stage2[Counter]);
+    	 }
+    printf("\n");
+    for (Counter=1; Encryptedmessage[Counter] != 0; Counter ++){
+        
+        if (Stage2[Counter] >=53){
+            Stage3[Counter] = Stage2[Counter]-21;
+        }
+        else if(Stage2[Counter] <= 26)
+        {
+            Stage3[Counter]= Stage2[Counter] + 64;
+         }
+         else{
+             Stage3[Counter] = Stage2[Counter] +70;
+         }
     }
-    else if(stage2[i] <= 26)
-    {
-        stage3[i]= stage2[i] + 64;
-     }
-     else{
-         stage3[i] = stage2[i] +70;
-     }
-}
-printf("stage3:");
-for(i = 1; Dmessage[i] != 0; i++){
-	   printf("%c", stage3[i] - 1);
-	 }
-	 printf("\n");
-}
+    printf("Stage3:");
+    for(Counter = 1; Encryptedmessage[Counter] != 0; Counter++){
+    	   printf("%c", Stage3[Counter] - 1);
+    	 }
+    	 printf("\n");
+    }
